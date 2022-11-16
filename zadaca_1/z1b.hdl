@@ -1,0 +1,11 @@
+CHIP z1b {
+    IN x, y, z;
+    OUT out;
+    
+    PARTS:
+	Or(a = y, b = z, out = yOrz);
+	Not(in = yOrz, out = NotyOrz);
+	
+	And(a = x, b = NotyOrz, out = out);
+   
+}

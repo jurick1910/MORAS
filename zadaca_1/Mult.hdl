@@ -1,0 +1,175 @@
+CHIP Mult {
+    IN a[16], b[16];
+    OUT out[16];
+    
+    PARTS:
+	And16(a = a, b[0] = b[0], b[1] = b[0], b[2] = b[0], b[3] = b[0], b[4] = b[0], b[5] = b[0], b[6] = b[0], b[7] = b[0], b[8] = b[0], b[9] = b[0], b[10] = b[0], b[11] = b[0], b[12] = b[0], b[13] = b[0], b[14] = b[0], b[15] = b[0], out = out0);
+	
+	And16(a = a, b[0] = b[1], b[1] = b[1], b[2] = b[1], b[3] = b[1], b[4] = b[1], b[5] = b[1], b[6] = b[1], b[7] = b[1], b[8] = b[1], b[9] = b[1], b[10] = b[1], b[11] = b[1], b[12] = b[1], b[13] = b[1], b[14] = b[1], b[15] = b[1], out = out1);
+	BitShiftL(in = out1, out = ou1);
+	
+	And16(a = a, b[0] = b[2], b[1] = b[2], b[2] = b[2], b[3] = b[2], b[4] = b[2], b[5] = b[2], b[6] = b[2], b[7] = b[2], b[8] = b[2], b[9] = b[2], b[10] = b[2], b[11] = b[2], b[12] = b[2], b[13] = b[2], b[14] = b[2], b[15] = b[2], out = out2);
+	BitShiftL(in = out2, out = o2);
+	BitShiftL(in = o2, out = ou2);
+	
+	And16(a = a, b[0] = b[3], b[1] = b[3], b[2] = b[3], b[3] = b[3], b[4] = b[3], b[5] = b[3], b[6] = b[3], b[7] = b[3], b[8] = b[3], b[9] = b[3], b[10] = b[3], b[11] = b[3], b[12] = b[3], b[13] = b[3], b[14] = b[3], b[15] = b[3], out = out3);
+	BitShiftL(in = out3, out = o3);
+	BitShiftL(in = o3, out = o3o);
+	BitShiftL(in = o3o, out = ou3);
+	
+	And16(a = a, b[0] = b[4], b[1] = b[4], b[2] = b[4], b[3] = b[4], b[4] = b[4], b[5] = b[4], b[6] = b[4], b[7] = b[4], b[8] = b[4], b[9] = b[4], b[10] = b[4], b[11] = b[4], b[12] = b[4], b[13] = b[4], b[14] = b[4], b[15] = b[4], out = out4);
+	BitShiftL(in = out4, out = o4);
+	BitShiftL(in = o4, out = o4o);
+	BitShiftL(in = o4o, out = o4o4);
+	BitShiftL(in = o4o4, out = ou4);
+	
+	And16(a = a, b[0] = b[5], b[1] = b[5], b[2] = b[5], b[3] = b[5], b[4] = b[5], b[5] = b[5], b[6] = b[5], b[7] = b[5], b[8] = b[5], b[9] = b[5], b[10] = b[5], b[11] = b[5], b[12] = b[5], b[13] = b[5], b[14] = b[5], b[15] = b[5], out = out5);
+	BitShiftL(in = out5, out = o5);
+	BitShiftL(in = o5, out = o5o);
+	BitShiftL(in = o5o, out = o5o5);
+	BitShiftL(in = o5o5, out = ot5);
+	BitShiftL(in = ot5, out = ou5);
+	
+	And16(a = a, b[0] = b[6], b[1] = b[6], b[2] = b[6], b[3] = b[6], b[4] = b[6], b[5] = b[6], b[6] = b[6], b[7] = b[6], b[8] = b[6], b[9] = b[6], b[10] = b[6], b[11] = b[6], b[12] = b[6], b[13] = b[6], b[14] = b[6], b[15] = b[6], out = out6);
+	BitShiftL(in = out6, out = o6);
+	BitShiftL(in = o6, out = o6o);
+	BitShiftL(in = o6o, out = o6o6);
+	BitShiftL(in = o6o6, out = ot6);
+	BitShiftL(in = ot6, out = ot6t);
+	BitShiftL(in = ot6t, out = ou6);
+	
+	And16(a = a, b[0] = b[7], b[1] = b[7], b[2] = b[7], b[3] = b[7], b[4] = b[7], b[5] = b[7], b[6] = b[7], b[7] = b[7], b[8] = b[7], b[9] = b[7], b[10] = b[7], b[11] = b[7], b[12] = b[7], b[13] = b[7], b[14] = b[7], b[15] = b[7], out = out7);
+	BitShiftL(in = out7, out = o7);
+	BitShiftL(in = o7, out = o7o);
+	BitShiftL(in = o7o, out = o7o7);
+	BitShiftL(in = o7o7, out = ot7);
+	BitShiftL(in = ot7, out = ot7t);
+	BitShiftL(in = ot7t, out = op7);
+	BitShiftL(in = op7, out = ou7);
+	
+	And16(a = a, b[0] = b[8], b[1] = b[8], b[2] = b[8], b[3] = b[8], b[4] = b[8], b[5] = b[8], b[6] = b[8], b[7] = b[8], b[8] = b[8], b[9] = b[8], b[10] = b[8], b[11] = b[8], b[12] = b[8], b[13] = b[8], b[14] = b[8], b[15] = b[8], out = out8);
+	BitShiftL(in = out8, out = o8);
+	BitShiftL(in = o8, out = o8o);
+	BitShiftL(in = o8o, out = o8o8);
+	BitShiftL(in = o8o8, out = ot8);
+	BitShiftL(in = ot8, out = ot8t);
+	BitShiftL(in = ot8t, out = otp8);
+	BitShiftL(in = otp8, out = op8);
+	BitShiftL(in = op8, out = ou8);
+	
+	And16(a = a, b[0] = b[9], b[1] = b[9], b[2] = b[9], b[3] = b[9], b[4] = b[9], b[5] = b[9], b[6] = b[9], b[7] = b[9], b[8] = b[9], b[9] = b[9], b[10] = b[9], b[11] = b[9], b[12] = b[9], b[13] = b[9], b[14] = b[9], b[15] = b[9], out = out9);
+	BitShiftL(in = out9, out = o9);
+	BitShiftL(in = o9, out = o9o);
+	BitShiftL(in = o9o, out = o9o9);
+	BitShiftL(in = o9o9, out = ot9);
+	BitShiftL(in = ot9, out = ot9t);
+	BitShiftL(in = ot9t, out = op9);
+	BitShiftL(in = op9, out = otp9);
+	BitShiftL(in = otp9, out = opt9);
+	BitShiftL(in = opt9, out = ou9);
+	
+	And16(a = a, b[0] = b[10], b[1] = b[10], b[2] = b[10], b[3] = b[10], b[4] = b[10], b[5] = b[10], b[6] = b[10], b[7] = b[10], b[8] = b[10], b[9] = b[10], b[10] = b[10], b[11] = b[10], b[12] = b[10], b[13] = b[10], b[14] = b[10], b[15] = b[10], out = out10);
+	BitShiftL(in = out10, out = o10);
+	BitShiftL(in = o10, out = o10o);
+	BitShiftL(in = o10o, out = o10o0);
+	BitShiftL(in = o10o0, out = op10);
+	BitShiftL(in = op10, out = ot10);
+	BitShiftL(in = ot10, out = opt10);
+	BitShiftL(in = opt10, out = otp10);
+	BitShiftL(in = otp10, out = oo10);
+	BitShiftL(in = oo10, out = oto10);
+	BitShiftL(in = oto10, out = ou10);
+	
+	And16(a = a, b[0] = b[11], b[1] = b[11], b[2] = b[11], b[3] = b[11], b[4] = b[11], b[5] = b[11], b[6] = b[11], b[7] = b[11], b[8] = b[11], b[9] = b[11], b[10] = b[11], b[11] = b[11], b[12] = b[11], b[13] = b[11], b[14] = b[11], b[15] = b[11], out = out11);
+	BitShiftL(in = out11, out = o11);
+	BitShiftL(in = o11, out = o11o);
+	BitShiftL(in = o11o, out = ot11);
+	BitShiftL(in = ot11, out = op11);
+	BitShiftL(in = op11, out = otp11);
+	BitShiftL(in = otp11, out = opt11);
+	BitShiftL(in = opt11, out = oto11);
+	BitShiftL(in = oto11, out = oot11);
+	BitShiftL(in = oot11, out = oti11);
+	BitShiftL(in = oti11, out = oi11);
+	BitShiftL(in = oi11, out = ou11);
+	
+	And16(a = a, b[0] = b[12], b[1] = b[12], b[2] = b[12], b[3] = b[12], b[4] = b[12], b[5] = b[12], b[6] = b[12], b[7] = b[12], b[8] = b[12], b[9] = b[12], b[10] = b[12], b[11] = b[12], b[12] = b[12], b[13] = b[12], b[14] = b[12], b[15] = b[12], out = out12);
+	BitShiftL(in = out12, out = o12);
+	BitShiftL(in = o12, out = o12o);
+	BitShiftL(in = o12o, out = ot12);
+	BitShiftL(in = ot12, out = op12);
+	BitShiftL(in = op12, out = otp12);
+	BitShiftL(in = otp12, out = opt12);
+	BitShiftL(in = opt12, out = oo12);
+	BitShiftL(in = oo12, out = oot12);
+	BitShiftL(in = oot12, out = opo12);
+	BitShiftL(in = opo12, out = oop12);
+	BitShiftL(in = oop12, out = oi12);
+	BitShiftL(in = oi12, out = ou12);
+	
+	And16(a = a, b[0] = b[13], b[1] = b[13], b[2] = b[13], b[3] = b[13], b[4] = b[13], b[5] = b[13], b[6] = b[13], b[7] = b[13], b[8] = b[13], b[9] = b[13], b[10] = b[13], b[11] = b[13], b[12] = b[13], b[13] = b[13], b[14] = b[13], b[15] = b[13], out = out13);
+	BitShiftL(in = out13, out = o13);
+	BitShiftL(in = o13, out = o13o);
+	BitShiftL(in = o13o, out = ot13);
+	BitShiftL(in = ot13, out = op13);
+	BitShiftL(in = op13, out = otp13);
+	BitShiftL(in = otp13, out = opt13);
+	BitShiftL(in = opt13, out = ol13);
+	BitShiftL(in = ol13, out = ok13);
+	BitShiftL(in = ok13, out = olk13);
+	BitShiftL(in = olk13, out = okl13);
+	BitShiftL(in = okl13, out = oti13);
+	BitShiftL(in = oti13, out = oit13);
+	BitShiftL(in = oit13, out = ou13);
+	
+	And16(a = a, b[0] = b[14], b[1] = b[14], b[2] = b[14], b[3] = b[14], b[4] = b[14], b[5] = b[14], b[6] = b[14], b[7] = b[14], b[8] = b[14], b[9] = b[14], b[10] = b[14], b[11] = b[14], b[12] = b[14], b[13] = b[14], b[14] = b[14], b[15] = b[14], out = out14);
+	BitShiftL(in = out14, out = o14);
+	BitShiftL(in = o14, out = o14o);
+	BitShiftL(in = o14o, out = ot14);
+	BitShiftL(in = ot14, out = op14);
+	BitShiftL(in = op14, out = otp14);
+	BitShiftL(in = otp14, out = opt14);
+	BitShiftL(in = opt14, out = ol14);
+	BitShiftL(in = ol14, out = ok14);
+	BitShiftL(in = ok14, out = olk14);
+	BitShiftL(in = olk14, out = okl14);
+	BitShiftL(in = okl14, out = oi14);
+	BitShiftL(in = oi14, out = oti14);
+	BitShiftL(in = oti14, out = om14);
+	BitShiftL(in = om14, out = ou14);
+	
+	And16(a = a, b[0] = b[15], b[1] = b[15], b[2] = b[15], b[3] = b[15], b[4] = b[15], b[5] = b[15], b[6] = b[15], b[7] = b[15], b[8] = b[15], b[9] = b[15], b[10] = b[15], b[11] = b[15], b[12] = b[15], b[13] = b[15], b[14] = b[15], b[15] = b[15], out = out15);
+	BitShiftL(in = out15, out = o15);
+	BitShiftL(in = o15, out = o15o);
+	BitShiftL(in = o15o, out = o15o5);
+	BitShiftL(in = o15o5, out = ot15);
+	BitShiftL(in = ot15, out = op15);
+	BitShiftL(in = op15, out = oz15);
+	BitShiftL(in = oz15, out = oi15);
+	BitShiftL(in = oi15, out = or15);
+	BitShiftL(in = or15, out = oe15);
+	BitShiftL(in = oe15, out = otp15);
+	BitShiftL(in = otp15, out = opt15);
+	BitShiftL(in = opt15, out = opi15);
+	BitShiftL(in = opi15, out = ol15);
+	BitShiftL(in = ol15, out = olt15);
+	BitShiftL(in = olt15, out = ou15);
+	
+
+	Add16(a = out0, b = ou1, out = aand1);
+	Add16(a = aand1, b = ou2, out = aand2);
+	Add16(a = aand2, b = ou3, out = aand3);
+	Add16(a = aand3, b = ou4, out = aand4);
+	Add16(a = aand4, b = ou5, out = aand5);
+	Add16(a = aand5, b = ou6, out = aand6);
+	Add16(a = aand6, b = ou7, out = aand7);
+	Add16(a = aand7, b = ou8, out = aand8);
+	Add16(a = aand8, b = ou9, out = aand9);
+	Add16(a = aand9, b = ou10, out = aand10);
+	Add16(a = aand10, b = ou11, out = aand11);
+	Add16(a = aand11, b = ou12, out = aand12);
+	Add16(a = aand12, b = ou13, out = aand13);
+	Add16(a = aand13, b = ou14, out = aand14);
+	Add16(a = aand14, b = ou15, out = out);
+	
+}
