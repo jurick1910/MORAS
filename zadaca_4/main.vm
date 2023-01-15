@@ -1,0 +1,17 @@
+sp
+call main.Main 0
+ep
+
+function Main 0
+
+	push constant 5
+	call fibonacci.Fibonacci 1
+	pop static 1
+
+	push constant 2
+	push constant 5
+	push constant 8
+	call mid.Mid 3
+	pop static 0
+
+	return
