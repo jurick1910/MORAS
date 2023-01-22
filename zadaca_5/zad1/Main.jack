@@ -1,0 +1,27 @@
+class Main {
+
+	function void  main() {
+		var Array A;
+		var int size, i;
+		
+		let size = Keyboard.readInt("Unesite duljinu polja: ");
+		let A = Array.new(size);
+		
+		let i = 0;
+		
+		while(i < size) {
+			let A[i] = Keyboard.readInt("Unesite broj: ");
+			let i = i + 1;
+		}
+		
+		do Output.println();
+		
+		do QuickSort.qSort(A, 0, size - 1);
+		do QuickSort.qsprint(A, size);
+		
+		do A.dispose();
+		
+		return;
+	}
+	
+}

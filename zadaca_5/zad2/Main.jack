@@ -1,0 +1,41 @@
+class Main {
+	
+	function void main(){
+		var vint a, b;
+		
+		let a = vint.new(2);
+		let b = vint.new(2);
+		
+		do Output.printString("Duljine vek.: ");
+		do Output.printInt(a.len());
+		do Output.printString(", ");
+		do Output.printInt(b.len());
+		do Output.println();
+		
+		do a.set(0, 1);
+		do a.set(2, 3);
+		do a.set(5, 10);
+		do a.set(15, 4);
+		do b.set(0, 1);
+		do b.set(2, 3);
+		do b.set(5, 10);
+		do b.set(15, 4);
+		
+		if(vint.is_eq(a, b)){
+			do Output.printString("Vek. su isti.");
+		}else{
+			do Output.printString("Vek. nisu isti.");
+		}
+		do Output.println();
+		
+		if(vint.elems(a, b)){
+			do Output.printString("Elem. vek. su isti.");
+		}else{
+			do Output.printString("Elem. vek. nisu isti.");
+		}
+		do Output.println();
+		
+		return;
+	}
+
+}

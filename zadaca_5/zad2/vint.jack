@@ -1,0 +1,109 @@
+class vint {
+	
+	field Array A;
+	field int capacity;
+	
+	constructor vint new(int n){
+		let capacity = 1;
+		if(~(n < 0)){
+			while(n > 0){
+				let capacity = capacity * 2;
+				let n = n - 1;
+			}
+		}
+		let A = Array.new(capacity);
+		return this;	
+	}
+	
+	method int len(){
+		return capacity;
+	}
+
+	method Array get_array(){
+		return A;
+	}
+	
+	method int get(int k){
+		if((k > -1) & (k < capacity)){
+			return A[k];
+		}else{
+			do Output.printString("Invalid get");
+			do Output.println();
+			return -1;
+		}
+
+	}
+	
+	method void set(int k, int v){
+		if((k > -1) & (k < capacity)){
+			let A[k] = v;
+			return;
+		}else{
+			do Output.printString("Invalid set");
+			do Output.println();
+			return;
+		}
+	}
+	
+	method void resize(int m){
+		var int min, i;
+		var Array B;
+		
+		let min = capacity;
+		let capacity = 1;
+		if(~(m < 0)){
+			while(m > 0){
+				let capacity = capacity * 2;
+				let m = m - 1;
+			}
+		}
+		let B = Array.new(capacity);
+		let i = 0;
+		
+		while(i < min){
+			let B[i] = A[i];
+			let i = i + 1;
+		}
+		let A = B;
+		return;
+	}
+	
+	function bool is_eq(vint a, vint b){
+		var int i;
+		if(~(a.len() = b.len())){
+			return false;
+		}
+		
+		while(i < a.len()){
+			if(~(a.get(i) = b.get(i))){
+				return false;
+			}
+			let i = i + 1;
+		}
+		
+		return true;
+	}
+	
+	function bool elems(vint a, vint b){
+		var Array A, B;
+		var int i;
+		
+		if(a.len() = b.len()){
+			let A =	a.get_array();
+			let B = b.get_array();
+			
+			do QuickSort.qSort(A, 0, a.len() - 1);
+			do QuickSort.qSort(B, 0, b.len() - 1);
+			
+			while(i < a.len()){
+				if(~(A[i] = B[i])){
+					return false;
+				}
+				let i = i + 1;
+			}
+			return true;
+		}
+		return false;
+	}
+
+}
