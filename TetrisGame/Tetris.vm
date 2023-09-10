@@ -1,0 +1,2093 @@
+function Tetris.destructor 0
+push static 3
+call Array.dispose 1
+pop temp 0
+push constant 0
+return
+function Tetris.respawn 1
+push constant 0
+pop local 0
+push local 0
+push static 7
+add
+pop pointer 1
+push that 0
+call Tetromino.tetrominos 1
+pop static 4
+push local 0
+push static 7
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+call Tetromino.tetrominos 1
+pop static 5
+push constant 2
+pop local 0
+label WHILE_EXP0
+push static 6
+not
+if-goto WHILE_END0
+call Tetris.kraj 0
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 0
+call Tetris.pad 1
+pop temp 0
+push static 5
+pop static 4
+push local 0
+push static 7
+add
+pop pointer 1
+push that 0
+call Tetromino.tetrominos 1
+pop static 5
+push local 0
+push constant 7
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push constant 1
+add
+pop local 0
+goto IF_END1
+label IF_FALSE1
+push constant 0
+pop local 0
+label IF_END1
+goto IF_END0
+label IF_FALSE0
+push constant 0
+pop static 6
+push static 4
+call Tetromino.destet 1
+pop temp 0
+push static 5
+call Tetromino.destet 1
+pop temp 0
+label IF_END0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Tetris.pad 5
+push static 4
+call Tetromino.gety 1
+pop local 0
+push static 4
+call Tetromino.getx1 1
+pop local 1
+push static 4
+call Tetromino.getrot 1
+pop local 3
+push static 4
+call Tetromino.getob 1
+pop local 2
+call Tetris.brisanje 0
+pop temp 0
+push static 5
+call Tetromino.drawnext 1
+pop temp 0
+label WHILE_EXP0
+push constant 2
+call Tetris.stack 1
+not
+if-goto WHILE_END0
+push static 2
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push static 4
+call Tetromino.erase 1
+pop temp 0
+push static 4
+push constant 1
+call Tetromino.down 2
+pop temp 0
+push argument 0
+pop static 2
+label IF_FALSE0
+call Keyboard.keyPressed 0
+push constant 130
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push local 1
+push constant 0
+call Tetris.provjera 3
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push static 4
+call Tetromino.erase 1
+pop temp 0
+push static 4
+call Tetromino.moveLeft 1
+pop temp 0
+label IF_FALSE2
+label IF_FALSE1
+call Keyboard.keyPressed 0
+push constant 132
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 0
+push local 1
+push constant 1
+call Tetris.provjera 3
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push static 4
+call Tetromino.erase 1
+pop temp 0
+push static 4
+call Tetromino.moveRight 1
+pop temp 0
+label IF_FALSE4
+label IF_FALSE3
+call Keyboard.keyPressed 0
+push constant 133
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 3
+call Tetris.stack 1
+push constant 2
+call Tetris.stack 1
+and
+push constant 1
+call Tetris.stack 1
+and
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push static 4
+call Tetromino.erase 1
+pop temp 0
+push static 4
+push constant 2
+call Tetromino.down 2
+pop temp 0
+label IF_FALSE6
+label IF_FALSE5
+call Keyboard.keyPressed 0
+push constant 131
+eq
+push local 2
+push constant 2
+eq
+not
+and
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+call Tetris.prrot 0
+push constant 1
+call Tetris.stack 1
+and
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push static 4
+call Tetromino.erase 1
+pop temp 0
+push static 4
+call Tetromino.rotate 1
+pop temp 0
+push static 4
+call Tetromino.gety 1
+pop local 0
+push static 4
+call Tetromino.getx1 1
+pop local 1
+label IF_FALSE8
+label IF_FALSE7
+push static 4
+call Tetromino.draw 1
+pop temp 0
+push constant 100
+call Sys.wait 1
+pop temp 0
+push static 2
+push constant 1
+sub
+pop static 2
+goto WHILE_EXP0
+label WHILE_END0
+push static 4
+call Tetromino.draw 1
+pop temp 0
+call Tetris.newgrid 0
+pop temp 0
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+call Tetris.del 1
+pop temp 0
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+call Tetris.del 1
+pop temp 0
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+call Tetris.del 1
+pop temp 0
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+call Tetris.del 1
+pop temp 0
+push constant 0
+return
+function Tetris.tetset 1
+push constant 0
+pop static 1
+push argument 0
+pop static 2
+push constant 0
+not
+pop static 6
+push constant 315
+call Array.new 1
+pop static 3
+push constant 1
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 315
+lt
+not
+if-goto WHILE_END0
+push local 0
+push static 3
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 7
+call Array.new 1
+pop static 7
+push constant 0
+pop local 0
+label WHILE_EXP1
+push local 0
+push constant 7
+lt
+not
+if-goto WHILE_END1
+push constant 0
+push static 7
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push static 7
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push static 7
+add
+push constant 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push static 7
+add
+push constant 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push static 7
+add
+push constant 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push static 7
+add
+push constant 5
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push static 7
+add
+push constant 6
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push constant 0
+return
+function Tetris.izgl 0
+push argument 0
+pop static 0
+push constant 99
+push constant 7
+push constant 99
+push constant 241
+call Screen.drawLine 4
+pop temp 0
+push constant 99
+push constant 241
+push constant 281
+push constant 241
+call Screen.drawLine 4
+pop temp 0
+push constant 281
+push constant 7
+push constant 281
+push constant 241
+call Screen.drawLine 4
+pop temp 0
+push constant 14
+push constant 45
+call Output.moveCursor 2
+pop temp 0
+push constant 8
+call String.new 1
+push constant 66
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 68
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 86
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push static 1
+call Output.printInt 1
+pop temp 0
+push constant 17
+push constant 45
+call Output.moveCursor 2
+pop temp 0
+push constant 8
+call String.new 1
+push constant 82
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 122
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push static 0
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+call String.new 1
+push constant 49
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+label IF_FALSE0
+push static 0
+push constant 2
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+call String.new 1
+push constant 50
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+label IF_FALSE1
+push static 0
+push constant 3
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 1
+call String.new 1
+push constant 51
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+label IF_FALSE2
+push constant 330
+push constant 17
+push constant 330
+push constant 117
+call Screen.drawLine 4
+pop temp 0
+push constant 450
+push constant 17
+push constant 450
+push constant 117
+call Screen.drawLine 4
+pop temp 0
+push constant 330
+push constant 17
+push constant 450
+push constant 17
+call Screen.drawLine 4
+pop temp 0
+push constant 330
+push constant 117
+push constant 450
+push constant 117
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Tetris.brisanje 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 335
+push constant 22
+push constant 445
+push constant 112
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+return
+function Tetris.del 2
+push constant 1
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 16
+lt
+not
+if-goto WHILE_END0
+push constant 15
+push argument 0
+push constant 1
+add
+call Math.multiply 2
+push local 0
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push static 1
+push static 0
+push constant 100
+call Math.multiply 2
+add
+pop static 1
+push constant 1
+pop local 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+label WHILE_EXP1
+push local 0
+push constant 16
+lt
+not
+if-goto WHILE_END1
+push constant 15
+push argument 0
+push constant 1
+add
+call Math.multiply 2
+push local 0
+add
+push static 3
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+sub
+push constant 12
+call Math.multiply 2
+push constant 100
+add
+push argument 0
+push constant 12
+call Math.multiply 2
+push local 0
+push constant 12
+call Math.multiply 2
+push constant 100
+add
+push argument 0
+push constant 1
+add
+push constant 12
+call Math.multiply 2
+call Screen.drawRectangle 4
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 14
+push constant 47
+call Output.moveCursor 2
+pop temp 0
+push static 1
+call Output.printInt 1
+pop temp 0
+label WHILE_EXP2
+push argument 0
+push constant 0
+gt
+not
+if-goto WHILE_END2
+push constant 1
+pop local 0
+label WHILE_EXP3
+push local 0
+push constant 16
+lt
+not
+if-goto WHILE_END3
+push constant 15
+push argument 0
+push constant 1
+add
+call Math.multiply 2
+push local 0
+add
+push static 3
+add
+push constant 15
+push argument 0
+call Math.multiply 2
+push local 0
+add
+push static 3
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP3
+label WHILE_END3
+push argument 0
+push constant 1
+sub
+pop argument 0
+goto WHILE_EXP2
+label WHILE_END2
+call Screen.clearScreen 0
+pop temp 0
+push static 0
+call Tetris.izgl 1
+pop temp 0
+push constant 1
+pop local 0
+push constant 1
+pop local 1
+label WHILE_EXP4
+push local 1
+push constant 21
+lt
+not
+if-goto WHILE_END4
+push constant 15
+push local 1
+call Math.multiply 2
+push local 0
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push constant 1
+sub
+push constant 12
+call Math.multiply 2
+push constant 100
+add
+push local 1
+push constant 1
+sub
+push constant 12
+call Math.multiply 2
+push local 0
+push constant 12
+call Math.multiply 2
+push constant 100
+add
+push local 1
+push constant 12
+call Math.multiply 2
+call Screen.drawRectangle 4
+pop temp 0
+label IF_FALSE1
+push local 0
+push constant 1
+add
+pop local 0
+push local 0
+push constant 16
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 1
+push constant 1
+add
+pop local 1
+push constant 1
+pop local 0
+label IF_FALSE2
+goto WHILE_EXP4
+label WHILE_END4
+push constant 0
+return
+function Tetris.newgrid 3
+push static 4
+call Tetromino.gety 1
+pop local 0
+push static 4
+call Tetromino.getx1 1
+pop local 1
+push constant 0
+pop local 2
+label WHILE_EXP0
+push local 2
+push constant 4
+lt
+not
+if-goto WHILE_END0
+push constant 15
+push local 2
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+call Math.multiply 2
+push local 2
+push local 0
+add
+pop pointer 1
+push that 0
+add
+push static 3
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 2
+push constant 1
+add
+pop local 2
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Tetris.stack 2
+push static 4
+call Tetromino.gety 1
+pop local 0
+push static 4
+call Tetromino.getx1 1
+pop local 1
+push constant 15
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+push argument 0
+add
+call Math.multiply 2
+push constant 0
+push local 0
+add
+pop pointer 1
+push that 0
+add
+push constant 315
+gt
+push constant 15
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+push argument 0
+add
+call Math.multiply 2
+push constant 1
+push local 0
+add
+pop pointer 1
+push that 0
+add
+push constant 315
+gt
+or
+push constant 15
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+push argument 0
+add
+call Math.multiply 2
+push constant 2
+push local 0
+add
+pop pointer 1
+push that 0
+add
+push constant 315
+gt
+or
+push constant 15
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+push argument 0
+add
+call Math.multiply 2
+push constant 3
+push local 0
+add
+pop pointer 1
+push that 0
+add
+push constant 315
+gt
+or
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push constant 15
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+push argument 0
+add
+call Math.multiply 2
+push constant 0
+push local 0
+add
+pop pointer 1
+push that 0
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+push constant 15
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+push argument 0
+add
+call Math.multiply 2
+push constant 1
+push local 0
+add
+pop pointer 1
+push that 0
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+and
+push constant 15
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+push argument 0
+add
+call Math.multiply 2
+push constant 2
+push local 0
+add
+pop pointer 1
+push that 0
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+and
+push constant 15
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+push argument 0
+add
+call Math.multiply 2
+push constant 3
+push local 0
+add
+pop pointer 1
+push that 0
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+not
+return
+goto IF_END1
+label IF_FALSE1
+push constant 0
+return
+label IF_END1
+function Tetris.provjera 4
+push argument 2
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+push argument 0
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 0
+push constant 1
+push argument 0
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 1
+push constant 2
+push argument 0
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 2
+push constant 3
+push argument 0
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 3
+goto IF_END0
+label IF_FALSE0
+push constant 0
+push argument 0
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop local 0
+push constant 1
+push argument 0
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop local 1
+push constant 2
+push argument 0
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop local 2
+push constant 3
+push argument 0
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop local 3
+label IF_END0
+push constant 15
+push constant 0
+push argument 1
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+call Math.multiply 2
+push local 0
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+push constant 15
+push constant 1
+push argument 1
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+call Math.multiply 2
+push local 1
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+and
+push constant 15
+push constant 2
+push argument 1
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+call Math.multiply 2
+push local 2
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+and
+push constant 15
+push constant 3
+push argument 1
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+call Math.multiply 2
+push local 3
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+not
+return
+goto IF_END1
+label IF_FALSE1
+push constant 0
+return
+label IF_END1
+function Tetris.prrot 14
+push static 4
+call Tetromino.gety 1
+pop local 1
+push static 4
+call Tetromino.getx 1
+pop local 0
+push static 4
+call Tetromino.getx1 1
+pop local 2
+push static 4
+call Tetromino.gety1 1
+pop local 3
+push static 4
+call Tetromino.getrot 1
+pop local 5
+push static 4
+call Tetromino.getob 1
+pop local 4
+push local 4
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 5
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 2
+add
+pop local 6
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 2
+add
+pop local 7
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 8
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 9
+push constant 0
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 10
+push constant 1
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 11
+push constant 2
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 12
+push constant 3
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 13
+label IF_FALSE1
+push local 5
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 6
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 7
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 3
+add
+pop local 8
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 9
+push constant 0
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 10
+push constant 1
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 11
+push constant 2
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 12
+push constant 3
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 13
+label IF_FALSE2
+label IF_FALSE0
+push local 4
+push constant 1
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 5
+push constant 0
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop local 6
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 7
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 8
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 2
+add
+pop local 9
+push constant 0
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 10
+push constant 1
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 11
+push constant 2
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop local 12
+push constant 3
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 13
+label IF_FALSE4
+push local 5
+push constant 2
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 6
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 7
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 8
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 9
+push constant 0
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 2
+add
+pop local 10
+push constant 1
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 11
+push constant 2
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 2
+add
+pop local 12
+push constant 3
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 13
+label IF_FALSE5
+label IF_FALSE3
+push local 4
+push constant 3
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push local 5
+push constant 0
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 6
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 7
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 2
+add
+pop local 8
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 3
+add
+pop local 9
+push constant 0
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 10
+push constant 1
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop local 11
+push constant 2
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 2
+sub
+pop local 12
+push constant 3
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 3
+sub
+pop local 13
+label IF_FALSE7
+label IF_FALSE6
+push local 4
+push constant 4
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push local 5
+push constant 0
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 2
+add
+pop local 6
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 7
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 8
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 9
+push constant 0
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 10
+push constant 1
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 11
+push constant 2
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 12
+push constant 3
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 2
+sub
+pop local 13
+label IF_FALSE9
+label IF_FALSE8
+push local 4
+push constant 5
+eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push local 5
+push constant 0
+eq
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 6
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 7
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 8
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 2
+sub
+pop local 9
+push constant 0
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 2
+sub
+pop local 10
+push constant 1
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 11
+push constant 2
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 12
+push constant 3
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 13
+goto IF_END11
+label IF_FALSE11
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 2
+add
+pop local 6
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 7
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 8
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 9
+push constant 0
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 10
+push constant 1
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 11
+push constant 2
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 12
+push constant 3
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 2
+sub
+pop local 13
+label IF_END11
+label IF_FALSE10
+push local 4
+push constant 6
+eq
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push local 5
+push constant 0
+eq
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop local 6
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 7
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 8
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 9
+push constant 0
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop local 10
+push constant 1
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 11
+push constant 2
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 12
+push constant 3
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 13
+label IF_FALSE13
+push local 5
+push constant 2
+eq
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 6
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 7
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop local 8
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 9
+push constant 0
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop local 10
+push constant 1
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 11
+push constant 2
+push local 2
+add
+pop pointer 1
+push that 0
+push constant 2
+sub
+pop local 12
+push constant 3
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 13
+label IF_FALSE14
+label IF_FALSE12
+push constant 15
+push local 10
+push constant 1
+add
+call Math.multiply 2
+push local 6
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+push constant 15
+push local 11
+push constant 1
+add
+call Math.multiply 2
+push local 7
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+and
+push constant 15
+push local 12
+push constant 1
+add
+call Math.multiply 2
+push local 8
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+and
+push constant 15
+push local 13
+push constant 1
+add
+call Math.multiply 2
+push local 9
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+and
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push constant 0
+not
+return
+goto IF_END15
+label IF_FALSE15
+push constant 0
+return
+label IF_END15
+function Tetris.kraj 1
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 16
+lt
+not
+if-goto WHILE_END0
+push constant 15
+push local 0
+add
+push static 3
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+not
+return
+function Tetris.krajigre 0
+call Screen.clearScreen 0
+pop temp 0
+push constant 180
+push constant 80
+push constant 320
+push constant 80
+call Screen.drawLine 4
+pop temp 0
+push constant 180
+push constant 80
+push constant 180
+push constant 180
+call Screen.drawLine 4
+pop temp 0
+push constant 180
+push constant 180
+push constant 320
+push constant 180
+call Screen.drawLine 4
+pop temp 0
+push constant 320
+push constant 80
+push constant 320
+push constant 180
+call Screen.drawLine 4
+pop temp 0
+push constant 9
+push constant 27
+call Output.moveCursor 2
+pop temp 0
+push constant 9
+call String.new 1
+push constant 71
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 77
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 86
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 11
+push constant 26
+call Output.moveCursor 2
+pop temp 0
+push constant 7
+call String.new 1
+push constant 83
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push static 1
+call Output.printInt 1
+pop temp 0
+push constant 13
+push constant 27
+call Output.moveCursor 2
+pop temp 0
+push constant 8
+call String.new 1
+push constant 82
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 122
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push static 0
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+call String.new 1
+push constant 49
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+label IF_FALSE0
+push static 0
+push constant 2
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+call String.new 1
+push constant 50
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+label IF_FALSE1
+push static 0
+push constant 3
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 1
+call String.new 1
+push constant 51
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+label IF_FALSE2
+push constant 0
+return
+function Tetris.prgrid 2
+push constant 1
+pop local 0
+push constant 1
+pop local 1
+label WHILE_EXP0
+push local 1
+push constant 21
+lt
+not
+if-goto WHILE_END0
+push local 1
+push local 0
+push constant 40
+add
+call Output.moveCursor 2
+pop temp 0
+push constant 15
+push local 1
+call Math.multiply 2
+push local 0
+add
+push static 3
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+push local 0
+push constant 16
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+push constant 1
+add
+pop local 1
+push constant 1
+pop local 0
+label IF_FALSE0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

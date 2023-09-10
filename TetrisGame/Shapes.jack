@@ -1,0 +1,175 @@
+//pocetne koor blokova
+class Shapes{
+    function void Shapes(Array x, Array y, Array x1, Array y1, int oblik){
+        //L
+        if(oblik = 0){
+            let x[0] = 7;
+            let y[0] = 8;
+            let x1[0] = 0;
+            let y1[0] = 1;
+
+            let x[1] = 7;
+            let y[1] = 8;
+            let x1[1] = 1;
+            let y1[1] = 2;
+            
+            let x[2] = 7;
+            let y[2] = 8;
+            let x1[2] = 2;
+            let y1[2] = 3;
+
+            let x[3] = 8;
+            let y[3] = 9;
+            let x1[3] = 2;
+            let y1[3] = 3;
+
+            return;
+        }
+        //J
+        if(oblik = 1){
+            let x[0] = 7;
+            let y[0] = 8;
+            let x1[0] = 0;
+            let y1[0] = 1;
+
+            let x[1] = 7;
+            let y[1] = 8;
+            let x1[1] = 1;
+            let y1[1] = 2;
+            
+            let x[2] = 7;
+            let y[2] = 8;
+            let x1[2] = 2;
+            let y1[2] = 3;
+
+            let x[3] = 6;
+            let y[3] = 7;
+            let x1[3] = 2;
+            let y1[3] = 3;
+
+            return;
+        }
+        //O
+        if(oblik = 2){
+            let x[0] = 7;
+            let y[0] = 8;
+            let x1[0] = 0;
+            let y1[0] = 1;
+
+            let x[1] = 7;
+            let y[1] = 8;
+            let x1[1] = 1;
+            let y1[1] = 2;
+            
+            let x[2] = 8;
+            let y[2] = 9;
+            let x1[2] = 0;
+            let y1[2] = 1;
+
+            let x[3] = 8;
+            let y[3] = 9;
+            let x1[3] = 1;
+            let y1[3] = 2;
+
+            return;
+        }
+        //I
+        if(oblik = 3){
+            let x[0] = 7;
+            let y[0] = 8;
+            let x1[0] = 0;
+            let y1[0] = 1;
+
+            let x[1] = 7;
+            let y[1] = 8;
+            let x1[1] = 1;
+            let y1[1] = 2;
+            
+            let x[2] = 7;
+            let y[2] = 8;
+            let x1[2] = 2;
+            let y1[2] = 3;
+
+            let x[3] = 7;
+            let y[3] = 8;
+            let x1[3] = 3;
+            let y1[3] = 4;
+
+            return;
+        }
+        //Z
+        if(oblik = 4){
+            let x[0] = 6;
+            let y[0] = 7;
+            let x1[0] = 0;
+            let y1[0] = 1;
+
+            let x[1] = 7;
+            let y[1] = 8;
+            let x1[1] = 0;
+            let y1[1] = 1;
+
+            let x[2] = 7;
+            let y[2] = 8;
+            let x1[2] = 1;
+            let y1[2] = 2;
+            
+            let x[3] = 8;
+            let y[3] = 9;
+            let x1[3] = 1;
+            let y1[3] = 2;
+
+            return;
+        }
+        //S
+        if(oblik = 5){
+            let x[0] = 6;
+            let y[0] = 7;
+            let x1[0] = 1;
+            let y1[0] = 2;
+
+            let x[1] = 7;
+            let y[1] = 8;
+            let x1[1] = 1;
+            let y1[1] = 2;
+            
+            let x[2] = 7;
+            let y[2] = 8;
+            let x1[2] = 0;
+            let y1[2] = 1;
+            
+            
+            let x[3] = 8;
+            let y[3] = 9;
+            let x1[3] = 0;
+            let y1[3] = 1;
+
+            return;
+        }
+        //T
+        if(oblik = 6){
+            let x[0] = 6;
+            let y[0] = 7;
+            let x1[0] = 0;
+            let y1[0] = 1;
+
+            let x[1] = 7;
+            let y[1] = 8;
+            let x1[1] = 0;
+            let y1[1] = 1;
+
+            let x[2] = 8;
+            let y[2] = 9;
+            let x1[2] = 0;
+            let y1[2] = 1;
+
+            let x[3] = 7;
+            let y[3] = 8;
+            let x1[3] = 1;
+            let y1[3] = 2;
+
+            return;
+        }
+        return;
+    }
+}
